@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "coinbase-api"
+version = "0.1.0"
+description = "A python3 wrapper for the Coinbase SIWC and Advanced Trading API's using legacy API key's."
+authors = ["Draekus <patrick.gould94@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "coinbase_api", from = "."}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+python-dotenv = "^1.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
