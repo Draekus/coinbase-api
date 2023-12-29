@@ -77,3 +77,9 @@ api_url = "https://api.coinbase.com/v2/accounts/f05c4c43-7d36-53b4-b913-fba2fd01
 r = requests.get(api_url, auth=auth, timeout=5)
 print(r.status_code)
 print(r.json())
+
+# Get notifications
+api_url = "https://api.coinbase.com/v2/notifications"
+r = requests.get(api_url, auth=auth, timeout=5)
+print(r.status_code)
+print(r.json())
