@@ -1,6 +1,8 @@
 """Main Coinbase API module."""
 
-import hmac, hashlib, time
+import hmac
+import hashlib
+import time
 from requests.auth import AuthBase
 
 
@@ -28,3 +30,24 @@ class CoinbaseWalletAuth(AuthBase):
             }
         )
         return request
+
+
+class User:
+    """User class for storing user data."""
+
+    def __init__(self, id, name, native_currency, resource_path) -> None:
+        self.id = id
+        self.name = name
+        self.native_currency = native_currency
+        self.resource_path = resource_path
+        self.accounts = []
+
+    def add_account(self, new_account):
+        """Add account to user."""
+        self.accounts.append(new_account)
+
+    def __str__(self) -> str:
+        return (
+            f"User ID: {self.id}\nName: {self.name}\nNative Currency: "
+            + f"{self.native_currency}\nResource Path: {self.resource_path}\n"
+        )

@@ -1,7 +1,7 @@
 """Main.py"""
 from dotenv import dotenv_values
 import requests
-from coinbase_api.coinbase import CoinbaseWalletAuth
+from coinbase_api.coinbase import CoinbaseWalletAuth, User
 
 
 # Load environment variables from .env
@@ -14,25 +14,6 @@ API_VERSION = config["API_VERSION"]
 
 
 ### Test Classes For Data Extraction ###
-class User:
-    """User class for storing user data."""
-
-    def __init__(self, id, name, native_currency, resource_path) -> None:
-        self.id = id
-        self.name = name
-        self.native_currency = native_currency
-        self.resource_path = resource_path
-        self.accounts = []
-
-    def add_account(self, new_account):
-        """Add account to user."""
-        self.accounts.append(new_account)
-
-    def __str__(self) -> str:
-        return (
-            f"User ID: {self.id}\nName: {self.name}\nNative Currency: "
-            + f"{self.native_currency}\nResource Path: {self.resource_path}\n"
-        )
 
 
 # Set API URL
@@ -42,9 +23,6 @@ auth = CoinbaseWalletAuth(API_KEY, API_SECRET, API_VERSION)
 
 # Get current user
 r = requests.get(api_url + "user", auth=auth, timeout=5)
-# Verify ssl certificate of request matches coinbase
-
-r.raise_for_status()
 
 # Print status code
 print(r.status_code)
